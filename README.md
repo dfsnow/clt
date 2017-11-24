@@ -16,7 +16,7 @@ For example, here's a basic linear cdf and inverse cdf:
 Given the inverse cdf above, you can run Monte Carlo simulations for various sample sizes of N using `clt()`. N is a vector of integers representing the number of draws from a distribution, B is the number of times one simulates each draw, and mu is the known mean of the pdf. Note that the inverse cdf argument is a string. The output is a dataframe with the dimensions `length(N) x B`.
 
 ```r
-clt(N = c(15,30,60,120,240,500), invcdf = "2*sqrt(runif(n))", B = 1000, mu = (4/3)))
+clt(N = c(15,30,60,120,240,500), invcdf = "2*sqrt(runif(n))", B = 1000, mu = (4/3))
 ```
 
 ### clt_eval()

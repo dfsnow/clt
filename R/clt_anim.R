@@ -18,6 +18,7 @@
 #' @import glue
 #' @import ggplot2
 #' @import magick
+#' @import magrittr
 #' @importFrom gtools mixedsort
 #' 
 #' @export
@@ -29,7 +30,7 @@ clt_anim <- function(data = NULL,
                      compile = FALSE,
                      fps = 4,
                      filename = "clt.gif") {
-  for (i in names(data)){
+  for (i in colnames(data)){
     data[[i]][data[[i]] < xlim[1] || data[[i]] > xlim[2]] <- NA
     clt_anim.plot <- ggplot(data,
                             aes(x=data[[i]])) + 

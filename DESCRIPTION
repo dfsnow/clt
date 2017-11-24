@@ -16,6 +16,7 @@ VignetteBuilder: knitr
 Imports: gtools,
     ggplot2,
     magick,
+    magrittr,
     glue
 URL: http://github.com/dfsnow/clt
 SystemRequirements: ImageMagick++

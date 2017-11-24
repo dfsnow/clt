@@ -35,7 +35,7 @@ clt_eval <- function(data = NULL, ci = 1.96, zonly = TRUE) {
       )
     }
     return(clt_eval.vec)
-  } else if (zonly == TRUE && is.vector(data) == TRUE) {
+  } else if (zonly == TRUE && is.atomic(data) == TRUE) {
     clt_eval.vec <- c()
     return(clt_eval.vec <- sum(
       ifelse((abs(data) > ci), 1, 0)/sum(
@@ -48,7 +48,7 @@ clt_eval <- function(data = NULL, ci = 1.96, zonly = TRUE) {
   clt_eval.df <- data.frame(matrix(NA, 1, 2))
   colnames(clt_eval.df) <- c("N", "% of Z-Scores Rejected")
   
-  for (i in names(data)){
+  for (i in colnames(data)){
     clt_eval.df[match(i,names(data)),1] <- i
     clt_eval.df[match(i,names(data)),2] <- sum(
       ifelse((abs(data[[i]]) > ci), 1, 0)/sum(

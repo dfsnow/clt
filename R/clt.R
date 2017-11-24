@@ -25,7 +25,7 @@ clt <- function(N = NULL, invcdf = NULL, B = 1000, mu = 0) {
     stop("vector for N must contain only integers greater than 1")
   }
   if (!is.character(invcdf)) {
-    stop("invcdf must be a string expression for formula of an inverse cdf")
+    stop("invcdf must be a string expression for the formula of an inverse cdf")
   }
   clt.df <- data.frame(matrix(NA, B, length(N)))
   

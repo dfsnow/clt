@@ -29,7 +29,6 @@ clt_anim <- function(data = NULL,
                      compile = FALSE,
                      fps = 4,
                      filename = "clt.gif") {
-  clt_anim.pb <- txtProgressBar(min = 0, max = ncol(data), style = 3)
   for (i in names(data)){
     data[[i]][data[[i]] < xlim[1] || data[[i]] > xlim[2]] <- NA
     clt_anim.plot <- ggplot(data,
@@ -67,11 +66,7 @@ clt_anim <- function(data = NULL,
            plot = clt_anim.plot,
            width = 6,
            height = 6)
-    setTxtProgressBar(clt_anim.pb, match(i,names(data[-1])))
   }
-  
-  setTxtProgressBar(clt_anim.pb, ncol(data))
-  close(clt_anim.pb)
   message("Finished creating individual frames, saved in working directory")
   
   if (compile == TRUE) {

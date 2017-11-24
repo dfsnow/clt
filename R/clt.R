@@ -28,19 +28,14 @@ clt <- function(N = NULL, invcdf = NULL, B = 1000, mu = 0) {
     stop("invcdf must be a string expression for formula of an inverse cdf")
   }
   clt.df <- data.frame(matrix(NA, B, length(N)))
-  clt.pb <- txtProgressBar(min = 0, max = length(N), style = 3)
   
   for (n in N){
     for (i in 1:B){
       clt.sample <- eval(parse(text = invcdf))
       clt.df[i,match(n,N)] <- (mean(clt.sample)-mu)/(sd(clt.sample)/sqrt(n))
-      setTxtProgressBar(clt.pb, match(n,N[-1]))
     }
   }
-  
-  setTxtProgressBar(clt.pb, length(N))
   colnames(clt.df) <- N
-  close(clt.pb)
-  
+
   return(clt.df)
 }

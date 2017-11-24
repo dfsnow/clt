@@ -42,7 +42,7 @@ clt(N = c(2,4,8,16,32,64,128,256,512,1024,2048,4096,8192,16384),
   invcdf = "runif(n, -1, 1)", B = 10000) %>%
 clt_anim(compile = TRUE, fps = 2, xlim = c(-4, 4))
 ```
-!['uni'](https://github.com/dfsnow/clt/raw/master/gifs/uni.gif)
+!['uni'](https://raw.githubusercontent.com/dfsnow/clt/master/gifs/uni.gif)
 
 #### Binomial Distribution
 ```r
@@ -50,7 +50,7 @@ clt(N = c(2,4,8,16,32,64,128,256,512,1024,2048,4096,8192,16384),
   invcdf = "ifelse(runif(n) < .75, 1, 0)", B = 10000, mu = .75) %>%
 clt_anim(compile = TRUE, fps = 2)
 ```
-!['binom'](https://github.com/dfsnow/clt/raw/master/gifs/binom.gif)
+!['binom'](https://raw.githubusercontent.com/dfsnow/clt/master/gifs/binom.gif)
 
 #### Log Normal Distribution
 ```r
@@ -58,12 +58,12 @@ clt(N = c(2,4,8,16,32,64,128,256,512,1024,2048,4096,8192,16384),
   invcdf = "exp(1 + qnorm(runif(n)))", B = 10000, mu = 4.48) %>%
 clt_anim(compile = TRUE, fps = 2, xlim = c(-8, 4))
 ```
-!['log'](https://github.com/dfsnow/clt/raw/master/gifs/log.gif)
+!['log'](https://raw.githubusercontent.com/dfsnow/clt/master/gifs/log.gif)
 
 #### Exponential Distribution
 ```r
 clt(N = c(2,4,8,16,32,64,128,256,512,1024,2048,4096,8192,16384),
   invcdf = "qexp(runif(n), .10)", B = 10000, mu = 10) %>%
-clt_anim(compile = TRUE, fps = 2, xlim = c(-10, 4))
+clt_anim(compile = TRUE, fps = 2, xlim = c(-8, 4))
 ```
-!['exp'](https://github.com/dfsnow/clt/raw/master/gifs/exp.gif)
+!['exp'](https://raw.githubusercontent.com/dfsnow/clt/master/gifs/exp.gif)

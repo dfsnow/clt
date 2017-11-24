@@ -3,3 +3,7 @@
 export(clt)
 export(clt_anim)
 export(clt_eval)
+import(ggplot2)
+import(glue)
+import(magick)
+importFrom(gtools,mixedsort)

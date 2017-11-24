@@ -2,7 +2,7 @@
 % Please edit documentation in R/clt.R
 \name{clt}
 \alias{clt}
-\title{Monte Carlo simulations for an inverse cdf}
+\title{Monte Carlo Simulations for an Inverse CDF}
 \usage{
 clt(N = NULL, invcdf = NULL, B = 1000, mu = 0)
 }
@@ -24,8 +24,8 @@ to a data frame.
 }
 \examples{
 
-The below will sample a uniform distribution 10000 times, drawing 2, 10,
-40, and 500 for each simulation and output a data frame.
+# The below will sample a uniform distribution 10000 times, drawing 2, 10,
+# 40, and 500 for each simulation and output a data frame.
 
 df <- clt(N = c(2,10,40,500), invcdf = "runif(n, -1, 1)", B = 10000)
 

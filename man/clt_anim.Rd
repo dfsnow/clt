@@ -2,7 +2,7 @@
 % Please edit documentation in R/clt_anim.R
 \name{clt_anim}
 \alias{clt_anim}
-\title{Making animated gifs of each N}
+\title{Animating the Results of \code{clt()}}
 \usage{
 clt_anim(data = NULL, ci = 1.96, xlim = c(-4, 4), compile = FALSE,
   fps = 4, filename = "clt.gif")

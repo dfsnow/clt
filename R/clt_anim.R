@@ -15,8 +15,13 @@
 #' @param fps The number of frames per second for the gif.
 #' @param filename The output name of the .gif file.
 #' 
+#' @import glue
+#' @import ggplot2
+#' @import magick
+#' @importFrom gtools mixedsort
 #' 
 #' @export
+#' 
 
 clt_anim <- function(data = NULL,
                      ci = 1.96,

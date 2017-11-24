@@ -2,7 +2,7 @@
 % Please edit documentation in R/clt_eval.R
 \name{clt_eval}
 \alias{clt_eval}
-\title{Evaluating Z-Scores}
+\title{Evaluating Z-Scores Created by \code{clt()}}
 \usage{
 clt_eval(data = NULL, ci = 1.96, zonly = TRUE)
 }
@@ -17,4 +17,19 @@ outputs z-scores paired with N size as a data frame.}
 \description{
 \code{clt_eval()} evaluates the results from \code{clt()}. It outputs the 
 percentage of z-scores which fell outside the specified critical values.
+}
+\examples{
+
+# The below will sample a uniform distribution 10000 times, drawing 2, 10,
+# 40, and 500 for each simulation and output a data frame. It will the output
+# the percentage of each N's simulated z-scores which were above the critical
+# value specified. 
+
+df <- clt(N = c(2,10,40,500), invcdf = "runif(n, -1, 1)", B = 10000)
+clt_eval(df, ci = 1.96)
+
+# You can also use the pipe operator to pass the results of \\code{clt()} to \\code{clt_eval()}.
+
+clt(N = c(2,10,40,500), invcdf = "runif(n, -1, 1)", B = 10000) \%>\% clt_eval()
+
 }

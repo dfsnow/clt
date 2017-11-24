@@ -1,0 +1,22 @@
+Package: clt
+Type: Package
+Title: Run and test Monte Carlo simulations using any inverse cdf
+Version: 0.1.0
+Date: 2017-11-22
+Author: c(person("Dan", "Snow", email = "dfsnow@uchicago.edu"))
+Maintainer: Dan Snow <dfsnow@uchicago.edu>
+Description: Run Monte Carlo simulations for an inverse cdf. N = the sample sizes
+    to be tested, it must be a vector of integers greater than 1. invcdf = a string
+    expression representing your unevaluated inverse cdf, it must contain small n.
+    For example: invcdf = "2*sqrt(runif(n))" represents the inverse cdf for a linear
+    pdf of 1/2x. B = the total number of simulations. clt_anim requires ImageMagick.
+License: GPL-2
+LazyData: TRUE
+VignetteBuilder: knitr
+Imports: gtools,
+    ggplot2,
+    magick,
+    glue
+URL: http://github.com/dfsnow/clt
+SystemRequirements: ImageMagick++
+RoxygenNote: 6.0.1

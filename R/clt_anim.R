@@ -30,7 +30,7 @@ clt_anim <- function(data = NULL,
                      compile = FALSE,
                      fps = 4,
                      filename = "clt.gif") {
-  for (i in colnames(data)){
+  for (i in colnames(data)) {
     data[[i]][data[[i]] < xlim[1] || data[[i]] > xlim[2]] <- NA
     clt_anim.plot <- ggplot(data,
                             aes(x=data[[i]])) + 
@@ -58,10 +58,8 @@ clt_anim <- function(data = NULL,
                y = .73,
                hjust = 0,
                label = glue("Rej. Rate = {a}",
-                            a = sprintf("%0.3f", clt_eval(data[[i]])
-                                        )
-                            )
-               )
+                            a = sprintf("%0.3f", clt_eval(data[[i]]))))
+
     clt_anim.file = glue("N{i}.png", i = i)
     ggsave(filename = clt_anim.file,
            plot = clt_anim.plot,

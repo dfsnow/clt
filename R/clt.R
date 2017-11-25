@@ -6,7 +6,7 @@
 #'
 #' @param N The sample sizes (number of draws) you would like to test,
 #' must be a vector of integers greater than 1. 
-#' @param invcdf A string representing the unevaluated inverse cdf. This should include
+#' @param invcdf A string representing the unevaluated inverse cdf. This MUST include
 #' the variable n (the sample size), typically enclosed by \code{runif()}, like so \code{runif(n).}
 #' @param B The number of simulations to run for each sample.
 #' @param mu The actual known mean of the pdf.
@@ -21,21 +21,21 @@
 #' @export
 
 clt <- function(N = NULL, invcdf = NULL, B = 1000, mu = 0) {
-  if (min(N) <= 1) {
-    stop("vector for N must contain only integers greater than 1")
-  }
   if (!is.character(invcdf)) {
     stop("invcdf must be a string expression for the formula of an inverse cdf")
+  } 
+  if (min(N) <= 1 || !is.numeric(N) || !is.atomic(N)) {
+    stop("N must be an atomic vector containing only integers greater than 1")
   }
   clt.df <- data.frame(matrix(NA, B, length(N)))
   
-  for (n in N){
-    for (i in 1:B){
+  for (n in N) {
+    for (i in 1:B) {
       clt.sample <- eval(parse(text = invcdf))
-      clt.df[i,match(n,N)] <- (mean(clt.sample)-mu)/(sd(clt.sample)/sqrt(n))
+      clt.df[i, match(n,N)] <- (mean(clt.sample) - mu) / (sd(clt.sample) / sqrt(n))
     }
   }
   colnames(clt.df) <- N
-
+  
   return(clt.df)
 }

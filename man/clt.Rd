@@ -10,7 +10,7 @@ clt(N = NULL, invcdf = NULL, B = 1000, mu = 0)
 \item{N}{The sample sizes (number of draws) you would like to test,
 must be a vector of integers greater than 1.}
 
-\item{invcdf}{A string representing the unevaluated inverse cdf. This should include
+\item{invcdf}{A string representing the unevaluated inverse cdf. This MUST include
 the variable n (the sample size), typically enclosed by \code{runif()}, like so \code{runif(n).}}
 
 \item{B}{The number of simulations to run for each sample.}

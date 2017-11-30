@@ -28,14 +28,12 @@ clt <- function(N = NULL, invcdf = NULL, B = 1000, mu = 0) {
     stop("N must be an atomic vector containing only integers greater than 1")
   }
   clt.df <- data.frame(matrix(NA, B, length(N)))
-  
   for (n in N) {
     for (i in 1:B) {
       clt.sample <- eval(parse(text = invcdf))
-      clt.df[i, match(n,N)] <- (mean(clt.sample) - mu) / (sd(clt.sample) / sqrt(n))
+      clt.df[i, match(n, N)] <- (mean(clt.sample) - mu) / (sd(clt.sample) / sqrt(n))
     }
   }
   colnames(clt.df) <- N
-  
   return(clt.df)
 }

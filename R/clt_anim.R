@@ -32,8 +32,7 @@ clt_anim <- function(data = NULL,
                      filename = "clt.gif") {
   for (i in colnames(data)) {
     data[[i]][data[[i]] < xlim[1] || data[[i]] > xlim[2]] <- NA
-    clt_anim.plot <- ggplot(data,
-                            aes(x=data[[i]])) + 
+    clt_anim.plot <- ggplot(data, aes(x=data[[i]])) + 
       geom_histogram(aes(y = ..density..),
                      binwidth = .25,
                      na.rm = TRUE) +
@@ -57,9 +56,9 @@ clt_anim <- function(data = NULL,
                x = (xlim[1] + 0.1),
                y = .73,
                hjust = 0,
-               label = glue("Rej. Rate = {a}",
-                            a = sprintf("%0.3f", clt_eval(data[[i]]))))
-
+               label = glue(
+                 "Rej. Rate = {a}",
+                  a = sprintf("%0.3f", clt_eval(data[[i]]))))
     clt_anim.file = glue("N{i}.png", i = i)
     ggsave(filename = clt_anim.file,
            plot = clt_anim.plot,
@@ -67,7 +66,6 @@ clt_anim <- function(data = NULL,
            height = 6)
   }
   message("Finished creating individual frames, saved in working directory")
-  
   if (compile == TRUE) {
     message("Using ImageMagick to create gif file...")
     clt_anim.pngs <- image_read(mixedsort(list.files(pattern = "N*.png")))

@@ -26,28 +26,26 @@
 
 clt_eval <- function(data = NULL, ci = 1.96, zonly = TRUE) {
   if (zonly == TRUE && is.data.frame(data) == TRUE) {
-    clt_eval.vec <- c()
+    clt_eval.vec <- double (ncol(data))
     for (i in 1:ncol(data)){
       clt_eval.vec[i] <- sum(
         ifelse((abs(data[,i]) > ci), 1, 0) / nrow(data))
     }
-    return(clt_eval.vec)
-    
-  } else if (zonly == TRUE && is.atomic(data) == TRUE) {
-      clt_eval.vec <- sum(
-        ifelse((abs(data) > ci), 1, 0) / length(data))
-    return(clt_eval.vec)
-  }
-
-  clt_eval.df <- data.frame(matrix(NA, 1, 2))
-  colnames(clt_eval.df) <- c("N", "% of Z-Scores Rejected")
-
-  if (is.data.frame(data) == TRUE) {
+  return(clt_eval.vec)
+  } 
+  else if (zonly == TRUE && is.atomic(data) == TRUE) {
+    clt_eval.vec <- double (length(data))
+    clt_eval.vec <- sum(
+      ifelse((abs(data) > ci), 1, 0) / length(data))
+  return(clt_eval.vec)
+  } else {
+    clt_eval.df <- data.frame(matrix(NA, 1, 2))
+    colnames(clt_eval.df) <- c("N", "% of Z-Scores Rejected")
     for (i in colnames(data)){
-      clt_eval.df[match(i,names(data)),1] <- i
-      clt_eval.df[match(i,names(data)),2] <- sum(
+      clt_eval.df[match(i, names(data)),1] <- i
+      clt_eval.df[match(i, names(data)),2] <- sum(
         ifelse((abs(data[[i]]) > ci), 1, 0) / nrow(data))
     }
-    return(clt_eval.df)
+  return(clt_eval.df)
   }
 }
